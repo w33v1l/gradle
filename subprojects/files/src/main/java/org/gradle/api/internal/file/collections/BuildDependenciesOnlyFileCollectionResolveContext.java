@@ -15,7 +15,6 @@
  */
 package org.gradle.api.internal.file.collections;
 
-import groovy.lang.Closure;
 import org.gradle.api.Buildable;
 import org.gradle.api.Task;
 import org.gradle.api.internal.tasks.AbstractTaskDependencyResolveContext;
@@ -77,17 +76,10 @@ public class BuildDependenciesOnlyFileCollectionResolveContext implements FileCo
                     return taskContext.getTask();
                 }
             });
-        } else if (element instanceof Closure) {
-            Closure closure = (Closure) element;
-            Object closureResult = closure.call();
-            if (closureResult != null) {
-                add(closureResult);
-            }
         } else if (element instanceof Callable) {
-            Callable callable = (Callable) element;
-            Object callableResult = uncheckedCall(callable);
-            if (callableResult != null) {
-                add(callableResult);
+            Object deferredResult = uncheckedCall((Callable) element);
+            if (deferredResult != null) {
+                add(deferredResult);
             }
         } else if (element instanceof Iterable && !(element instanceof Path)) {
             // Ignore Path
