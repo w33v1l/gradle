@@ -74,16 +74,21 @@ class GccLinker extends AbstractCompiler<LinkerSpec> {
                 args.add(file.getAbsolutePath());
             }
             for (File file : spec.getLibraries()) {
+
+                // TODO: Coverage libfoo.a file -> split into 2 object -lfoo
+                // TODO: Coverage libfoo.so file -> split into 2 object -lfoo
+                // TODO: Coverage libfoo.o file -> libfoo.o directly
+
                 // Link against libraries leveraging the library path.
-                if (file.getName().startsWith ("lib")) {
+                if (file.getName().startsWith("lib")) {
                     args.add("-L" + file.getParent());
-                    String library = file.getName().replaceFirst("lib", "-l");
-                    args.add(library.substring(0, library.lastIndexOf('.')));
-                }
-                // Link against direct objects with the full path.
-                else {
+                    String libraryName = file.getName().substring("lib".length(), file.getName().lastIndexOf('.'));
+                    args.add("-l" + libraryName);
+                } else {
+                    // Link against direct objects with the full path.
                     args.add(file.getAbsolutePath());
                 }
+                // TODO Compare both binaries
 
             }
             if (!spec.getLibraryPath().isEmpty()) {
