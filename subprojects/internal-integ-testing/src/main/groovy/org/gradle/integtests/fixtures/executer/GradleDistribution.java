@@ -131,6 +131,14 @@ public interface GradleDistribution {
      */
     boolean isToolingApiLogsFailureOnCancel();
 
+    /**
+     * Returns true if this version retains the original exception as cause on phased action fail.
+     */
+    boolean isToolingApiHasCauseOnPhasedActionFail();
+
+    /**
+     * Returns true if this version logs errors to stdout instead of stderr.
+     */
     boolean isToolingApiMergesStderrIntoStdout();
 
     /**

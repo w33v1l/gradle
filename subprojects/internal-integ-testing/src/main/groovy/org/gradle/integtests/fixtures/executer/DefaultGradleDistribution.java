@@ -215,6 +215,11 @@ public class DefaultGradleDistribution implements GradleDistribution {
     }
 
     @Override
+    public boolean isToolingApiHasCauseOnPhasedActionFail() {
+        return isSameOrNewer("5.1");
+    }
+
+    @Override
     public boolean isToolingApiMergesStderrIntoStdout() {
         return isSameOrNewer("4.7") && isSameOrOlder("5.0");
     }
