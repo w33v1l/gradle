@@ -41,6 +41,7 @@ libraries.commons_codec =       [coordinates: 'commons-codec:commons-codec', ver
 libraries.commons_collections = [coordinates: 'commons-collections:commons-collections', version: '3.2.2']
 libraries.commons_compress =    [coordinates: 'org.apache.commons:commons-compress', version: '1.14']
 libraries.commons_httpclient =  [coordinates: 'org.apache.httpcomponents:httpclient', version: '4.5.5']
+libraries.commons_httpclient_win = [coordinates: 'org.apache.httpcomponents:httpclient-win', version: '4.5.5']
 libraries.commons_io =          [coordinates: 'commons-io:commons-io', version: '2.4']
 libraries.commons_lang =        [coordinates: 'commons-lang:commons-lang', version: '2.6']
 libraries.commons_math =        [coordinates: 'org.apache.commons:commons-math3', version: '3.6.1']

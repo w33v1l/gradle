@@ -29,6 +29,7 @@ dependencies {
     api project(':baseServices')
     api project(':core')
     api libraries.commons_httpclient.coordinates
+    api libraries.commons_httpclient_win.coordinates
 
     implementation libraries.slf4j_api.coordinates
     implementation libraries.jcifs.coordinates
